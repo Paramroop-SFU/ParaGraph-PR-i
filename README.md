@@ -1,58 +1,34 @@
-A high-performance, multi-threaded implementation of the PageRank algorithm written in C++. This project focuses on parallelizing graph traversal and ranking using a push-based approach, synchronization primitives, and configurable data types.
+# ParaGraph-PR 🚀
 
-🚀 Features
-Multi-threaded Execution: Uses std::thread to distribute graph processing across multiple CPU cores.
+A high-performance, multi-threaded implementation of the **PageRank algorithm** written in C++. This project focuses on parallelizing graph traversal and ranking using a push-based approach, synchronization primitives, and configurable data types.
 
-Custom Synchronization: Implements thread safety using std::mutex and a CustomBarrier to coordinate iterations.
+## 🌟 Features
 
-Hybrid Data Support: Supports both int64_t and float precision through preprocessor directives (USE_INT).
+*   **Multi-threaded Execution:** Uses `std::thread` to distribute graph processing across multiple CPU cores.
+*   **Custom Synchronization:** Implements thread safety using `std::mutex` and a `CustomBarrier` to coordinate iterations.
+*   **Hybrid Data Support:** Supports both `int64_t` and `float` precision through preprocessor directives (`USE_INT`).
+*   **Scalable Architecture:** Built to handle large-scale graphs with configurable worker counts and iteration limits.
+*   **Comprehensive Toolset:** Includes additional parallel implementations for Triangle Counting and Pi calculation.
 
-Scalable Architecture: Built to handle large-scale graphs with configurable worker counts and iteration limits.
+---
 
-Comprehensive Toolset: Includes additional parallel implementations for Triangle Counting and Pi calculation.
+## 🛠 Prerequisites
 
-🛠 Prerequisites
-A C++11 (or higher) compatible compiler (e.g., g++, clang).
+*   A **C++11** (or higher) compatible compiler (e.g., `g++`, `clang`).
+*   `make` for building the project.
+*   A **Linux-based environment** (recommended for performance testing).
 
-make for building the project.
+---
 
-A Linux-based environment (recommended for performance testing).
+## 📂 Project Structure
 
-📂 Project Structure
-Plaintext
+```text
 ASSIGNMENT1/
 ├── core/
-│   ├── graph.h        # Graph data structures
-│   ├── utils.h        # Timer and utility functions
-│   └── cxxopts.h      # Command-line option parsing
-├── page_rank_parallel.cpp      # Main parallel PageRank logic
-├── triangle_counting_parallel.cpp
-├── pi_calculation_parallel.cpp
-└── Makefile           # Build automation
-⚙️ Installation & Usage
-Clone the repository:
-
-Bash
-git clone https://github.com/yourusername/ParaGraph-PR.git
-cd ParaGraph-PR
-Compile the project:
-
-Bash
-make
-Run PageRank:
-
-Bash
-./page_rank_parallel --nWorkers 4 --nIterations 20 --inputFile /path/to/your/graph.bin
-Arguments:
-Flag	Description	Default
---nWorkers	Number of concurrent threads	1
---nIterations	Maximum number of PageRank iterations	10
---inputFile	Path to the binary graph file	roadNet-CA
-📊 Performance Notes
-The implementation uses a push-based model where each vertex updates its neighbors' scores. To ensure data integrity during parallel updates, a mutex-lock strategy is employed.
-
-Note: For maximum throughput on extremely dense graphs, consider experimenting with atomic operations to reduce lock contention.
-
-Tip: Since you're using cxxopts, make sure that the core/ directory is properly linked in your include paths within the Makefile.
-
-Are you planning to add more graph algorithms to this repo later, like BFS or DFS?
+│   ├── graph.h                   # Graph data structures
+│   ├── utils.h                   # Timer and utility functions
+│   └── cxxopts.h                 # Command-line option parsing
+├── page_rank_parallel.cpp         # Main parallel PageRank logic
+├── triangle_counting_parallel.cpp # Parallel Triangle Counting
+├── pi_calculation_parallel.cpp    # Parallel Pi calculation
+└── Makefile                      # Build automation
